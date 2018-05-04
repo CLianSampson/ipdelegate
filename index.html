@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>闪电代理</title>
+		<link rel="stylesheet" href="css/index.css" />
+		<!-- 首先引入jQuery和unslider -->
+		<script type="text/javascript" src="unslider/jquery-1.11.1.min.js"></script>
+		<script type="text/javascript" src="unslider/unslider.min.js"></script>
+		<link rel="stylesheet" href="css/luobo.css" />
+		
+		<!--
+        	作者：328714598@qq.com
+        	时间：2018-03-19
+        	描述：侧边悬浮
+        -->
+        <link rel="stylesheet" href="css/side_float.css" />
+	</head>
+	<body>
+		<nav class="nav">
+			<img id="nav_logo" src="img/logo.jpg" />
+			<ul class="nav_left">
+				<li>首页</li>
+				<li>代理购买</li>
+				<li>使用教程</li>
+				<li>关于我们</li>
+			</ul>
+			<ul class="nav_right">
+				<li>个人中心</li>
+				<li>注册</li>
+				<li>登陆</li>
+			</ul>
+		</nav>
+		
+		<div class="container">
+			<!-- 把要轮播的地方写上来 -->
+			<div class="banner" id="b04">
+			    <ul>
+			        <li><img src="unslider/01.jpg" alt="" width="1024" height="480" ></li>
+			        <li><img src="unslider/02.jpg" alt="" width="1024" height="480" ></li>
+			        <li><img src="unslider/03.jpg" alt="" width="1024" height="480" ></li>
+			        <li><img src="unslider/04.jpg" alt="" width="1024" height="480" ></li>
+			        <li><img src="unslider/05.jpg" alt="" width="1024" height="480" ></li>
+			    </ul>
+			    <a href="javascript:void(0);" class="unslider-arrow04 prev"><img class="arrow" id="al" src="unslider/arrowl.png" alt="prev" width="20" height="35"></a>
+			    <a href="javascript:void(0);" class="unslider-arrow04 next"><img class="arrow" id="ar" src="unslider/arrowr.png" alt="next" width="20" height="37"></a>
+			</div>
+		</div>
+		
+		<footer style="text-align: center; font-size: 12px; color: white;">
+			<div style="height: 10px;"></div>
+			<p style="font-size: 16px; color: brown;">闪电代理：没有最快，只有更快</p>	
+			<div style="height: 10px;"></div>
+			<div style="display: inline-block; width: 50%;">
+				<button style="float: right; margin-right: 30px; font-size: 14px; color: white;">关于我们</button>
+			</div><div style="display: inline-block; width: 50%;">
+				<button style="float: left; margin-left: 30px; font-size: 14px; color: white;">加入我们</button>
+			</div>
+			<div style="height: 10px;"></div>
+			<div>
+				<img src="img/备案图标.png" style="vertical-align: middle;"/>
+				<span>粤公网安备 11010502015324号   粤ICP备11036675号-2</span>
+			</div>
+			<div style="height: 10px;"></div>
+			<p>深圳市九十九分科技有限公司&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地址：深圳是南山区大冲商务中心5号楼9层</p>
+		</footer>
+		
+		
+		<!--右侧悬浮菜单-->
+		<div class="slide">
+			<ul class="icon">
+				<li class="up" title="上一页"></li>
+				<li class="qq"></li>
+				<li class="tel"></li>
+				<li class="wx"></li>
+				<li class="down" title="下一页"></li>
+			</ul>
+			<ul class="info">
+				<li class="qq">
+					<p>在线沟通，请点我<a href="http://wpa.qq.com/msgrd?v=3&uin=123456789&site=qq&menu=yes" target="_blank">在线咨询</a></p>
+				</li>
+				<li class="tel">
+					<p>咨询热线：<br>400-800-8888<br>客服qq：<br>123456789</p>
+				</li>
+				<li class="wx">
+					<div class="img"><img src="side_float/img/1441956938.png" /></div>
+				</li>
+			</ul>
+		</div>
+		<div id="btn" class="index_cy"></div>
+	</body>
+	
+	
+	<!-- 最后用js控制   轮播图-->
+	<script>
+		$(document).ready(function(e) {
+		    var unslider04 = $('#b04').unslider({
+		        dots: true
+		    }),
+		    data04 = unslider04.data('unslider');
+		     
+		    $('.unslider-arrow04').click(function() {
+		        var fn = this.className.split(' ')[1];
+		        data04[fn]();
+		    });
+		});
+	</script>
+	
+	<!--
+    	作者：328714598@qq.com
+    	时间：2018-03-19
+    	描述：侧边悬浮
+    -->
+	<script type="text/javascript">
+		$(function(){
+			$('.slide .icon li').not('.up,.down').mouseenter(function(){
+				$('.slide .info').addClass('hover');
+				$('.slide .info li').hide();
+				$('.slide .info li.'+$(this).attr('class')).show();//.slide .info li.qq
+			});
+			$('.slide').mouseleave(function(){
+				$('.slide .info').removeClass('hover');
+			});
+			
+			$('#btn').click(function(){
+				$('.slide').toggle();
+				if($(this).hasClass('index_cy')){
+					$(this).removeClass('index_cy');
+					$(this).addClass('index_cy2');
+				}else{
+					$(this).removeClass('index_cy2');
+					$(this).addClass('index_cy');
+				}
+				
+			});
+			
+		});
+	</script>
+	
+</html>
